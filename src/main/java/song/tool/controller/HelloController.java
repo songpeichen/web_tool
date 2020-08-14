@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @RequestMapping("/hello")
-    String hello(){
+    String hello() {
         if (true)
-        throw new RuntimeException();
+            throw new RuntimeException();
         return "Hello Spring Boot!111112222111111";
     }
 

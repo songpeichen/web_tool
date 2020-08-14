@@ -1,7 +1,9 @@
 package song.tool.pojo;
 
 import javax.persistence.*;
+
 import lombok.Data;
+
 @Entity
 @Table(name = "category_")
 @Data

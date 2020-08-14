@@ -21,12 +21,12 @@ public class GlobalExceptionHandler {
         sw.flush();
         System.out.println(request.getParameterMap());
         System.out.println(request.getCharacterEncoding());
-        System.err.println("捕获异常："+request.getRequestURL()+"\n"+sw.toString());
+        System.err.println("捕获异常：" + request.getRequestURL() + "\n" + sw.toString());
 //        response.setHeader("contentType", "text/html; charset=utf-8");
 
         response.setContentType("text/html; charset=utf-8");
         response.setCharacterEncoding("UTF-8");
-        response.getOutputStream().write(("捕获异常：          "+request.getRequestURL()+"        \n"+sw.toString()).getBytes());
+        response.getOutputStream().write(("捕获异常：          " + request.getRequestURL() + "        \n" + sw.toString()).getBytes());
         response.getOutputStream().flush();
         response.getOutputStream().close();
     }
