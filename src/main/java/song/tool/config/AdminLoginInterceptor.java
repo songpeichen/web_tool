@@ -17,8 +17,6 @@ public class AdminLoginInterceptor implements HandlerInterceptor {
         HttpSession session = httpServletRequest.getSession(true);
 
 
-
-
 //        校验登录信息   未完成
 
         httpServletRequest.getHeader("token");
