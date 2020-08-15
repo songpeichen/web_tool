@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*HTML 页面，标题、文本、列表、表单、表格，清除-浏览器的默认值*/
+html, body, h1, h2, h3, h4, h5, h6, div, p, hr, ul, ol, li, dl, dt, dd, blockquote
+form, fieldset, label, button, submit, input, legend, textarea, select,
+table, caption, thead, th, tbody, tr, td, tfoot { margin:0; padding:0;}
+
+strong, b { font-weight:normal;} /*正常字体-清除粗体*/
+em, i { font-style:normal;}      /*正常字体-清除斜体*/
+
+li{ list-style:none;} /*清除-项目符号*/
+img { border:none; vertical-align:middle;}
+
+a { text-decoration:none;}           /*去除下划线*/
+/*a:hover{ text-decoration:underline;} 添加下划线*/
+
+table{ border-collapse:collapse; border-spacing:0;}/*表格的单元格的边框合并为一*/
+
+/*表单 (checked="checked") 单选、多选，默认选中状态 */
+textarea{ resize:none;} /*多行文本输入框。清除默认-调整尺寸*/
+
+button, input, select, textarea {outline:none;} /*清除-淡蓝色外轮廓*/
+
+button, input {vertical-align:middle; outline:none;} /*清除-默认外轮廓*/
+/*button, submit, input, select, textarea*/ {font:12px/1.5 Tahoma,"Microsoft YaHei", Arial,SimSun,Sans-serif;}
+
+/*button*/{-webkit-border-radius:6px;-moz-border-radius:6px; border-radius:6px; behavior:url(PIE-1.0.0/PIE.htc);}
+/*浏览器的兼容模式下的 button 中文字垂直方向不居中显示。垂直居中+添加高度，即可实现文本效果 MA
+	<button style="cursor:pointer; vertical-align:middle; height:24px;">删除</button>*/
+
+/*提交按钮(submit)、图片按钮(image)，添加手型光标*/
+a[href], label[for], button, input[type=image], input[type=button],input[type=reset],input[type=submit] {cursor:pointer}
+
+/**/
+.clear{ clear:both;}/*第一种方法：<div>全部浮动时，在末次<div>-清除浮动*/
+.clearfix:after{ content:".";height:0px;display:block;visibility:hidden;clear:both;}
+.clearfix{ zoom:1;} /*第二种方法：<li >全部浮动时，在父级<div>-清除浮动*/
+
+.fl{ float:left; }
+.fr{ float:right;}
+
+/*标题-文本不换行，溢出隐藏，省略号显示*/
+.ellipse { white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+E:first-child{ border-left:none; }    /*首位-无左边框*/
+E:last-child { background-image:none;}/*末位-无背景图*/
+
+/*光标类型 (cursor:default;)默认-箭头、(cursor:pointer;) 小手 */
+
+/*IE8+ 以上版本 -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box;*/
+
+.red-gradient{ color:#FFF; background:#22787f; /*浏览器均不识别，选取背景色。渐变类型(type)：线性渐变(linear-gradient)、径向渐变(radial-gradient)*/
+    background:-webkit-linear-gradient(top, #95cfcb, #22787f);/*Chrome10+,Safari5.1+*/
+    background:-moz-linear-gradient(top, #95cfcb, #22787f); /*FF3.6+*/
+    background:-ms-linear-gradient(top, #95cfcb, #22787f);  /*IE10*/
+    background:-o-linear-gradient(top, #95cfcb, #22787f);   /*Opera 11.10+*/
+    background:linear-gradient(top, #95cfcb, #22787f);      /*W3C*/
+    -ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#e55935, endColorstr=#c8310b)";/*IE9*/
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#95cfcb, endColorstr=#228188);}/*IE8*/
+:root .red-gradient{filter:none;}/*:root 选择器匹配文档根元素，针对 IE9单独处理滤镜效果，IE渐变类型，(0)垂直渐变，(1)水平渐变*/
+
+/*<buttom>点击按钮之后效果（瞬间的无意义），添加（正值）右下角-内阴影、（负值）左上角移动(1)像素*/
+.te-active { -webkit-box-shadow:1px 1px 1px 1px #333 inset;-moz-box-shadow:1px 1px 1px 1px #333 inset;
+    box-shadow:1px 1px 1px 1px #333 inset;
+    -webkit-transform:translate(-1px, -1px);-moz-transform:translate(-1px, -1px);-ms-transform:translate(-1px, -1px);
+    -o-transform:translate(-1px, -1px);transform:translate(-1px, -1px);}
+
+{ -webkit-box-sizing:border-box; -moz-box-sizing:border-box;-ms-box-sizing:border-box; -o-box-sizing:border-box;box-sizing:border-box;}
+input {
+    border-style:solid;
+    border-width: 1px;
+}
+input:focus {
+    border-style:solid;
+    border-color: #03a9f4;
+    box-shadow: 0 0 15px #03a9f4;
+    border-width: 1px;
+}
