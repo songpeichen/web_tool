@@ -44,12 +44,19 @@ layui.define(['jquery', 'form', 'tree', 'util', 'layer', 'table'], function (exp
                 data: params,
                 dataType: 'json',
                 beforeSend: function (request) {
-                    request.setRequestHeader("token", "localStorage.getItem(\"\")");
+                    request.setRequestHeader("token", localStorage.getItem('token'));
                 },
                 success: function (data, textStatus, jqXHR) {
-                    callback(data);
+                    if (data) {
+                        callback(data);
+                    } else {
+                        layer.message(url + "返回数据为空")
+                    }
                 },
                 error: function (data) {
+                    if (data && data.responseText == 'timeOutReLogin') {
+                        layui.layer.msg('长时间未操作已掉线');
+                    }
 
                 }
             });

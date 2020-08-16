@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../util/layui-v2.5.6/layui/layui.all.js"></script>
+    <script src="../../util/global.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../util/layui-v2.5.6/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../page/common/common.css"/>
+    <script src="index.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">信息管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item frameBtn" style="cursor: pointer;" id="addInfo"><a>信息登记</a></li>
+            <li class="layui-nav-item frameBtn" style="cursor: pointer;" id="queryInfo"><a>信息查询</a></li>
+            <li class="layui-nav-item frameBtn" style="cursor: pointer;" onclick="msg('未开发功能')"><a>控制台</a></li>
+            <li class="layui-nav-item frameBtn" style="cursor: pointer;" onclick="msg('未开发功能')"><a>商品管理</a></li>
+            <li class="layui-nav-item frameBtn" style="cursor: pointer;" onclick="msg('未开发功能')"><a>用户</a></li>
+            <li class="layui-nav-item frameBtn" style="cursor: pointer;" onclick="msg('未开发功能')">
+                <a>其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="../../util/layui-v2.5.6/layui/images/face/0.gif" class="layui-nav-img">
+                    <span id="userName"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" onclick="logout()" style=" cursor: pointer;"><a>退出</a></li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+    </div>
+    <div class="layui-body">
+    <iframe style="width: 100%;height:97%;display: none" id="addInfoFrame" class="iframe"></iframe>
+    <iframe style="width: 100%;height:97%;display: none" id="queryInfoFrame" class="iframe"></iframe>
+        <!-- 内容主体区域 -->
+<!--        <div style="padding: 15px;">内容主体区域</div>-->
+    </div>
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © developed by spc -
+    </div>
+</div>
+</body>
+</html>

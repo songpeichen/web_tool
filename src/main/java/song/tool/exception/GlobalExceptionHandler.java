@@ -19,8 +19,6 @@ public class GlobalExceptionHandler {
         e.printStackTrace(pw);
         pw.flush();
         sw.flush();
-        System.out.println(request.getParameterMap());
-        System.out.println(request.getCharacterEncoding());
         System.err.println("捕获异常：" + request.getRequestURL() + "\n" + sw.toString());
 //        response.setHeader("contentType", "text/html; charset=utf-8");
 

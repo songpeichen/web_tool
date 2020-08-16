@@ -25,4 +25,6 @@ public class User extends BaseEntity {
     @Column(name = "user_name")
     private String userName;
 
+    private String token;
+
 }

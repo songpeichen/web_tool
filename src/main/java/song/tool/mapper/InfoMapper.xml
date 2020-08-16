@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="song.tool.mapper.InfoMapper">
+    <insert id="addInfo"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `info`(`summary`, `patient_name`, `need_callback`, `callback_date`, `sex`, `remarks`, `create_date`, `create_user_code`) VALUE (#{info.summary}, #{info.patientName}, #{info.needCallback}, #{info.callbackDate}, #{info.sex}, #{info.remarks}, #{info.createDate}, #{info.createUserCode});
+
+    </insert>
+    <select id="queryInfoByVo" resultType="song.tool.pojo.Info">
+        select * from info order by need_callback desc, callback_date asc
+    </select>
+</mapper>
