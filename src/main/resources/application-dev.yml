@@ -19,8 +19,8 @@ spring:
         max-idle: 8
         min-idle: 0
         timeout: 0
-
-# mybatis配置  Mapper文件路径  输出日志
+#  resources:
+#    static-locations: classpath:/templates
 mybatis:
   mapper-locations: classpath:**/*Mapper.xml
   configuration:

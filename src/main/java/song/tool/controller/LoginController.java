@@ -22,6 +22,9 @@ public class LoginController {
     @RequestMapping("/login")
     public Object login(User user) {
         User user1 = userService.queryUserByNameAndPassword(user.getUserCode(),user.getPassword());
+        if(user1==null){
+            return ResponseVO.instance(false,null);
+        }
         String token = UUID.randomUUID().toString();
         user1.setToken(token+"_"+user1.getUserCode());
         redisTemplate.opsForValue().set(token+"_"+user1.getUserCode(),user1,30, TimeUnit.MINUTES);

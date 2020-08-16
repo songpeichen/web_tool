@@ -14,6 +14,8 @@ layui.jquery(function () {
                 // JSON.parse(localStorage.getItem('user'));
                 window.location.href = "/page/index/index.html"
 
+            } else {
+                layer.msg('用户名或密码错误');
             }
         })
     })
