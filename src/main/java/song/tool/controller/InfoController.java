@@ -42,5 +42,12 @@ public class InfoController {
         PageUtil pageUtil =new PageUtil(pageInfo.getList(),pageInfo.getPageNum(),pageInfo.getPageSize(),pageInfo.getTotal());
         return ResponseVO.instance(true,pageUtil);
     }
+    @RequestMapping("/unUseInfo")
+    public Object unUseInfo(InfoVO infoVO, HttpServletRequest request) {
+//        RequestUtil.getPostBody(request);
+        User user = (User) request.getAttribute("User");
+        Integer num = infoService.unUseInfo(infoVO);
+        return ResponseVO.instance(true,num);
+    }
 
 }

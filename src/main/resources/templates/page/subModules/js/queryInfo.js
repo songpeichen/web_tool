@@ -1,16 +1,33 @@
-layui.use(['table', 'layer', 'commonUtil'], function () {
+layui.use(['table', 'layer', 'commonUtil', 'form'], function () {
 });
 layui.jquery(function () {
     var $ = layui.jquery;
+    var form = layui.form;
+
+    document.unUse = function (id) {
+        layui.commonUtil.ajaxPost(getContextPath() + "/info/unUseInfo", {
+            id: id,
+        }, function (data) {
+            if (data.success&&data.data=='1') {
+                document.queryInfo();
+            } else {
+                layui.layer.msg('更新失败')
+            }
+        })
+
+    }
+    // queryCondition
 
     document.queryInfo = function () {
+        var obj = layui.commonUtil.serializeObj($('#queryCondition'));
+        // console.log(obj);
         layui.table.render({
             elem: '#infoList',
-            url: getContextPath()+"/info/queryInfo",
+            url: getContextPath() + "/info/queryInfo",
             toolbar: '',
             defaultToolbar: [],
             title: '信息查询',
-            where:{},
+            where: obj,
             method: 'POST',
             headers: {token: localStorage.getItem("token")},
             request: {
@@ -28,42 +45,73 @@ layui.jquery(function () {
             page: true,
             text: {none: '暂无相关数据'},
             cols: [[
-                {type: 'checkbox', fixed: 'left',width:'3%' ,backgroundColor:'red'},
-                {field: 'Num', align:"center", title: '序号',type:'numbers'},
-                {field: 'patientName', title:'患者姓名',align:"center",width: '16%',event: 'infoView', style:'cursor: pointer;color:blue',templet:function (d) {
-                    return d.patientName;
-                    }},
-                {field: 'needCallback', title:'需要回访',align:"center",width: '10%',templet:function(d){
-                    if(d.needCallback==1){
-                        return '是'
-                    }else {
-                        return '否'
+                {type: 'checkbox', fixed: 'left', width: '3%', backgroundColor: 'red'},
+                {field: 'Num', align: "center", title: '序号', type: 'numbers'},
+                {
+                    field: 'patientName',
+                    title: '患者姓名',
+                    align: "center",
+                    width: '8%',
+                    event: 'infoView',
+                    style: 'cursor: pointer;color:blue',
+                    templet: function (d) {
+                        return d.patientName;
                     }
-                }},
-                {field: 'callbackDate', title:'回访时间',align:"center",width: '11%', templet:function (d) {
-                    return d.callbackDate;
-                }},
-                {field: 'sex', title:'性别',align:"center",width: '8%',templet:function (d) {
-                    if(d.sex=='M'){
-                        return '男';
-                    }else if(d.sex=='F'){
-                        return '女';
-                    }else {
-                        return ''
+                },
+                {
+                    field: 'needCallback', title: '需要回访', align: "center", width: '7%', templet: function (d) {
+                        if (d.needCallback == 1) {
+                            return '是'
+                        } else {
+                            return '否'
+                        }
                     }
-                    }},
-                {field: 'summary', title:'摘要',align:"center",width: '16%',templet:function (d) {
-                    return (d.summary?d.summary:'');
-                }},
-                {field: 'createDate', title:'登记时间',align:"center",width: '15%',templet:function (d) {
-                    return d.createDate;
-                }},
-                {field: 'createUserCode', title:'登记人',align:"center",width: '15%',templet:function (d) {
-                    return d.createUserCode;
-                }},
-                {field: 'remarks', title:'详情',align:"center",width: '25%',templet:function (d) {
-                    return d.remarks?d.remarks:'';
-                }},
+                },
+                {
+                    field: 'callbackDate', title: '回访时间', align: "center", width: '11%', templet: function (d) {
+                        return d.callbackDate;
+                    }
+                },
+                {
+                    field: 'sex', title: '性别', align: "center", width: '5%', templet: function (d) {
+                        if (d.sex == 'M') {
+                            return '男';
+                        } else if (d.sex == 'F') {
+                            return '女';
+                        } else {
+                            return ''
+                        }
+                    }
+                },
+                {
+                    field: 'summary', title: '摘要', align: "center", width: '16%', templet: function (d) {
+                        return (d.summary ? d.summary : '');
+                    }
+                },
+                {
+                    field: 'createDate', title: '登记时间', align: "center", width: '11%', templet: function (d) {
+                        return d.createDate;
+                    }
+                },
+                {
+                    field: 'createUserCode', title: '登记人', align: "center", width: '6%', templet: function (d) {
+                        return d.createUserCode;
+                    }
+                },
+                {
+                    field: 'remarks', title: '详情', align: "center", width: '25%', templet: function (d) {
+                        return d.remarks ? d.remarks : '';
+                    }
+                },
+                {
+                    title: '操作', align: "center", width: '10%', templet: function (d) {
+                        if (d.createUserCode == (JSON.parse(localStorage.getItem('user')).userCode)&&d.needCallback=='1') {
+                            return '<a href="#" class="layui-btn layui-btn-xs" onclick="unUse(' + d.id + ')">已回访</a>';
+                        } else {
+                            return '';
+                        }
+                    }
+                }
                 // {fixed: 'right', align:"center", title: '操作', width: '10%',templet:function(d){
                 //         var buttons = "";
                 //         if(d.processStatus=="0"){
@@ -75,7 +123,7 @@ layui.jquery(function () {
                 //         return buttons;
                 //     }},
             ]],
-            done: function(res, curr, count){
+            done: function (res, curr, count) {
                 // document.distributeHistoryModel = res.distributeHistoryModel;
             }
         });
@@ -87,4 +135,8 @@ layui.jquery(function () {
             document.queryInfo();
         }
     }
+    form.render();
+    $('#query').click(function () {
+        document.queryInfo();
+    })
 })

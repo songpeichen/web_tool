@@ -15,7 +15,43 @@
 <body>
 <div>
     <div class="layui-card" style="border-radius: 10px">
-        <div class="layui-card-body" style="border-radius: 10px">
+        <div class="layui-card-body" style="border-radius: 10px;text-align: center">
+            <form class="layui-form" id="queryCondition">
+                <div class="layui-inline">
+                    <label class="layui-form-label">患者姓名：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="patientName" class="layui-input" placeholder="支持部分文字匹配">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">性别：</label>
+                    <div class="layui-input-inline">
+                        <select name="sex">
+                            <option value="" selected>全部</option>
+                            <option value="M">男</option>
+                            <option value="F">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">摘要：</label>
+                    <div class="layui-input-inline">
+                        <input name="summary" class="layui-input" placeholder="支持部分文字匹配">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">需要回访：</label>
+                    <div class="layui-input-inline">
+                        <select name="needCallback">
+                            <option value="">全部</option>
+                            <option value="1" selected>需要</option>
+                            <option value="0">不需要</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <input type="button" class="layui-btn layui-btn-radius" value="查询" id="query">
             <div class="layui-card-header">
                 <span style="font-weight: bold">查询结果</span>
             </div>

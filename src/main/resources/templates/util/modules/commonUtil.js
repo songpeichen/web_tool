@@ -19,7 +19,7 @@ layui.define(['jquery', 'form', 'tree', 'util', 'layer', 'table'], function (exp
             }
             return null;
         },
-        serializeJson: function (form) {
+        serializeObj: function (form) {
             var serializeObj = {};
             var array = form.serializeArray();
             var str = form.serialize();

@@ -4,10 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import song.tool.mapper.InfoMapper;
-import song.tool.pojo.Category;
 import song.tool.pojo.Info;
 import song.tool.service.InfoService;
-import song.tool.util.PageUtil;
 import song.tool.vo.InfoVO;
 
 import java.util.List;
@@ -29,5 +27,13 @@ public class InfoServiceImpl extends BaseServiceImpl<InfoMapper> implements Info
         PageInfo<Info> pageInfo = new PageInfo(list);
         pageInfo.getList();
         return pageInfo;
+    }
+
+    @Override
+    public Integer unUseInfo(InfoVO infoVO) {
+        if(infoVO.getId()==null){
+            return 0;
+        }
+        return baseMapper.unUseInfo(infoVO.getId());
     }
 }

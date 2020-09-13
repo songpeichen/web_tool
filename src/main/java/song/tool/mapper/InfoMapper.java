@@ -14,4 +14,6 @@ public interface InfoMapper {
     Long addInfo(@Param("info")Info info);
 
     List<Info> queryInfoByVo(@Param("infoVO") InfoVO infoVO);
+
+    Integer unUseInfo(@Param("id")Long id);
 }

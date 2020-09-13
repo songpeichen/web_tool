@@ -10,4 +10,6 @@ public interface InfoService<T> {
     Info addInfo(Info info);
 
     PageInfo queryInfo(InfoVO infoVO);
+
+    Integer unUseInfo(InfoVO infoVO);
 }

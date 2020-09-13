@@ -139,6 +139,11 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.62</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.toolkit.common</groupId>
+            <artifactId>toolkit-common-lang</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
